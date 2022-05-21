@@ -41,12 +41,12 @@ const Login = (props) => {
     return { value: '', isValid: false };
   };
 
-  const [emailState, emailDispatch] = useReducer(emailReducer, {
+  const [emailState, dispatchEmail] = useReducer(emailReducer, {
     value: '',
     isValid: undefined
   });
 
-  const [passwordState, passwordDispatch] = useReducer(passwordReducer, {
+  const [passwordState, dispatchPassword] = useReducer(passwordReducer, {
     value: '',
     isValid: undefined
   });
@@ -66,7 +66,7 @@ const Login = (props) => {
   // }, [enteredEmail, enteredPassword]);
 
   const emailChangeHandler = (event) => {
-    emailDispatch({
+    dispatchEmail({
       type: 'USER_INPUT',
       val: event.target.value
     });
@@ -78,7 +78,7 @@ const Login = (props) => {
   };
 
   const passwordChangeHandler = (event) => {
-    passwordDispatch({
+    dispatchPassword({
       type: 'PASSWORD_INPUT',
       val: event.target.value
     });
@@ -90,14 +90,14 @@ const Login = (props) => {
   };
 
   const validateEmailHandler = () => {
-    emailDispatch({
+    dispatchEmail({
       type: 'BLUR_EMAIL'
     });
     console.log('BLUR_EMAIL emailState value: ' + emailState.value + ' emailState.isValid: ' + emailState.isValid);
   };
 
   const validatePasswordHandler = () => {
-    passwordDispatch({ type: 'BLUR_PASSWORD' });
+    dispatchPassword({ type: 'BLUR_PASSWORD' });
     console.log('BLUR_PASSWORD passwordState value: ' + passwordState.value + ' isValid: ' + passwordState.isValid);
   };
 
