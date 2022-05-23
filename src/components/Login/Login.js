@@ -59,6 +59,7 @@ const Login = (props) => {
       setFormIsValid(
         emailIsValid && passwordIsValid
       );
+      console.log('useEffect');
     }, 500);
 
     return () => {
